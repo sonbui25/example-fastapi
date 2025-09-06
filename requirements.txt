@@ -27,7 +27,6 @@ markdown-it-py==4.0.0
 MarkupSafe==3.0.2
 mdurl==0.1.2
 orjson==3.11.2
-passlib==1.7.4
 psycopg2==2.9.10
 pyasn1==0.6.1
 pycparser==2.22
