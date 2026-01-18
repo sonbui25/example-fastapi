@@ -8,7 +8,7 @@ app = FastAPI()
 # models.Base.metadata.create_all(bind=engine) # Lệnh này sẽ tạo tất cả các bảng trong cơ sở dữ liệu chỉ khi không xài alembic
 
 origins = ["https://www.google.com"] # Danh sách các domain được phép gửi request đến API của bạn, có thể là ["*"] để cho phép tất cả các domain
-
+# Nếu muốn cho phép mọi domain truy cập API, bạn có thể sử dụng origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -23,5 +23,5 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root(): 
-    return {"message": "Hello World!!!"}
+    return {"message": "Hello World"}
 

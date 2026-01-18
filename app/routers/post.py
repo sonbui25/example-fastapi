@@ -19,6 +19,12 @@ def get_posts(db: Session = Depends(get_db), current_user: models.User = Depends
         filter(models.Post.title.contains(search)).\
         join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).\
         limit(limit).offset(skip).all()
+    # SQL: SELECT posts.*, COUNT(votes.post_id) as Votes
+#      FROM posts
+#      LEFT JOIN votes ON votes.post_id = posts.id
+#      WHERE posts.title LIKE '%search%'
+#      GROUP BY posts.id
+#      LIMIT 10 OFFSET 0
     return posts
 
 @router.get("/{id}", response_model=schemas.PostOut)
